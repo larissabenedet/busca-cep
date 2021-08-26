@@ -1,1 +1,140 @@
-.titulo {font-size: 2.8rem; color: var(--azul); text-align: center;}
+.titulo {
+  font-size: 2.8rem;
+  color: var(--azul);
+  text-align: center;
+}
+table {
+  margin: 40px 0 30px 0;
+  width: 100%;
+  max-width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+thead {
+  background-color: var(--azul);
+  color: #fff;
+  font-size: 1.4rem;
+}
+th {
+  font-weight: 400;
+  text-align: start;
+  padding: 15px 0;
+}
+tbody {
+  background-color: #fff;
+}
+tbody td {
+  padding: 25px 0;
+  font-size: 1.25rem;
+}
+
+.tablePadding {
+  padding-left: 30px;
+}
+
+.links a {
+  display: block;
+  margin-bottom: 25px;
+  font-size: 1.25rem;
+  color: var(--cinza);
+}
+a .icon {
+  vertical-align: top;
+  font-size: 1.25rem;
+  margin-right: 5px;
+  color: var(--azul);
+}
+a.iconStar .icon {
+  color: var(--amarelo);
+}
+iframe {
+  margin: 40px 0 80px 0;
+}
+
+@media screen and (max-width: 1040px) {
+  .resultado {
+    max-width: 750px;
+    margin: 0 auto;
+  }
+}
+@media screen and (max-width: 815px) {
+  .resultado {
+    max-width: 100%;
+    margin: 0 20px;
+  }
+  .tableResponsive thead,
+  .tableResponsive tbody,
+  .tableResponsive th,
+  .tableResponsive td,
+  .tableResponsive tr {
+    display: block;
+  }
+
+  .tableResponsive thead {
+    float: left;
+  }
+
+  .tableResponsive tbody {
+    width: auto;
+    position: relative;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    white-space: nowrap;
+  }
+  .tableResponsive tbody tr {
+    display: inline-block;
+  }
+
+  .tableResponsive td,
+  .tableResponsive th {
+    box-sizing: border-box;
+    padding: 25px 15px;
+    height: 75px;
+    vertical-align: middle;
+  }
+
+  .tablePadding {
+    padding-left: 0;
+  }
+
+  iframe {
+    margin: 40px 0 60px 0;
+  }
+}
+@media screen and (max-width: 520px) {
+  .titulo {
+    font-size: 2.4rem;
+  }
+  tbody td {
+    font-size: 1rem;
+  }
+  thead {
+    font-size: 1.2rem;
+  }
+  .tableResponsive td,
+  .tableResponsive th {
+    padding: 20px 15px;
+    height: 60px;
+  }
+  .links {
+    margin-bottom: 40px;
+  }
+  .links a,
+  a .icon {
+    font-size: 1.1rem;
+  }
+  .links a {
+    margin-bottom: 15px;
+  }
+}
+@media screen and (max-width: 400px) {
+  .titulo {
+    font-size: 2.2rem;
+  }
+  table {
+    margin: 30px 0 20px 0;
+  }
+  iframe {
+    margin: 30px 0 40px 0;
+  }
+}

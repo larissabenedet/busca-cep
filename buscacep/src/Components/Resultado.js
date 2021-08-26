@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./Resultado.module.css";
+import { FaSearch, FaStar } from "react-icons/fa";
 
 const Resultado = () => {
   const cep = window.localStorage.getItem("cep");
@@ -17,10 +18,10 @@ const Resultado = () => {
       {!dados && <p>Carregando...</p>}
       {dados && (
         <>
-          <table>
+          <table className={styles.tableResponsive}>
             <thead>
               <tr>
-                <th>CEP</th>
+                <th className={styles.tablePadding}>CEP</th>
                 <th>Logradouro</th>
                 <th>Bairro</th>
                 <th>Cidade/UF</th>
@@ -28,7 +29,7 @@ const Resultado = () => {
             </thead>
             <tbody>
               <tr>
-                <td>{dados.cep}</td>
+                <td className={styles.tablePadding}>{dados.cep}</td>
                 <td>{dados.logradouro}</td>
                 <td>{dados.bairro}</td>
                 <td>
@@ -37,13 +38,13 @@ const Resultado = () => {
               </tr>
             </tbody>
           </table>
-          
+
           <div className={styles.links}>
             <a href="/">
-              <i className={styles.arrow}></i>Nova busca
+              <FaSearch className={styles.icon} /> Nova busca
             </a>
-            <a>
-              <i className={styles.star}></i>Adicionar aos favoritos
+            <a className={styles.iconStar}>
+              <FaStar className={styles.icon} /> Adicionar aos favoritos
             </a>
           </div>
 
