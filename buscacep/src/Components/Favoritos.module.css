@@ -1,0 +1,9 @@
+.favoritos {max-width: 960px; margin: 0 auto;}
+.titulo {font-size: 2.8rem; color: var(--azul); text-align: center;}
+.wrapperSlider {margin-top: 40px;}
+.slide {text-align: center; background-color: #FFF; margin: 0 40px; padding: 20px 0;}
+.cep {font-weight: bold;}
+
+@media screen and (max-width: 970px) {
+    .favoritos {max-width: none; margin: 0 20px;}
+}
