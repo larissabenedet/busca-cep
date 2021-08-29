@@ -8,20 +8,32 @@
 }
 .menu a{
     color: var(--azul);
-    font-size: 1.9rem;
 }
 .menu a h1{
     font-size: 2.8rem;
     transition: all 0.3s;
+    font-weight: 800;
+    text-transform: none;
 }
-.menu a:hover, .menu a h1:hover{
+.menu a h1:hover{
     opacity: 0.8;
 }
 .navLinks a {
     display: inline-block;
+    text-transform: uppercase;
+    font-size: 1.4rem;
 }
 .navLinks a:first-child {
     margin-right: 40px;
+}
+.navLinks a span {
+    padding-bottom: 23px;
+    border-bottom: 4px solid transparent;
+    transition: all 0.3s;
+}
+.navLinks a span:hover, .navLinks a span.ativo {
+    padding-bottom: 23px;
+    border-bottom: 4px solid var(--amarelo);
 }
 @media screen and (max-width: 800px) {
     .menu {
