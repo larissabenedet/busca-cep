@@ -1,16 +1,17 @@
 import React from "react";
 import styles from "./Resultado.module.css";
+import { GlobalContext } from '../GlobalContext'
 import { FaSearch, FaStar } from "react-icons/fa";
 
 const Resultado = () => {
-  const cep = window.localStorage.getItem("cep");
+  const {handleFavoritos, storageCep} = React.useContext(GlobalContext)
   const [dados, setDados] = React.useState(null);
 
   React.useEffect(() => {
-    fetch(`https://viacep.com.br/ws/${cep}/json/`)
+    fetch(`https://viacep.com.br/ws/${storageCep}/json/`)
       .then((res) => res.json())
       .then((res) => setDados(res));
-  }, [cep]);
+  }, [storageCep]);
 
   return (
     <div className={styles.resultado}>
@@ -43,7 +44,7 @@ const Resultado = () => {
             <a href="/">
               <FaSearch className={styles.icon} /> Nova busca
             </a>
-            <a className={styles.iconStar}>
+            <a className={styles.iconStar} onClick={handleFavoritos}>
               <FaStar className={styles.icon} /> Adicionar aos favoritos
             </a>
           </div>
@@ -55,8 +56,8 @@ const Resultado = () => {
               height="450"
               loading="lazy"
               allowFullScreen
-              title={cep}
-              src={`https://www.google.com/maps/embed/v1/search?q=${cep}&key=AIzaSyCsBSH6PpjWGJC5B4SCVvgnBmFC6lkC7Bo`}
+              title={storageCep}
+              src={`https://www.google.com/maps/embed/v1/search?q=${storageCep}&key=AIzaSyCsBSH6PpjWGJC5B4SCVvgnBmFC6lkC7Bo`}
             ></iframe>
           </div>
         </>
