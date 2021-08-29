@@ -5,7 +5,9 @@ export const GlobalContext = React.createContext();
 export const GlobalStorage = ({ children }) => {
   const [cep, setCep] = React.useState("");
   const [validaCep, setValidaCep] = React.useState(true);
-  const [favoritos, setFavoritos] = React.useState(JSON.parse(window.localStorage.getItem("favoritos")) || []);
+  const [favoritos, setFavoritos] = React.useState(
+    JSON.parse(window.localStorage.getItem("favoritos")) || []
+  );
   const [dados, setDados] = React.useState(null);
   const storageCep = window.localStorage.getItem("cep");
 
@@ -14,6 +16,10 @@ export const GlobalStorage = ({ children }) => {
       .then((res) => res.json())
       .then((res) => setDados(res));
   }, [storageCep]);
+
+  React.useEffect(() => {
+    window.localStorage.setItem("favoritos", JSON.stringify(favoritos));
+  }, [favoritos]);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -31,8 +37,7 @@ export const GlobalStorage = ({ children }) => {
   }
 
   function handleFavoritos() {
-    setFavoritos([...favoritos, storageCep])
-    window.localStorage.setItem("favoritos", JSON.stringify(favoritos))
+    setFavoritos([...favoritos, storageCep]);
   }
 
   return (
