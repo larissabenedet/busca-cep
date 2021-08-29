@@ -6,7 +6,14 @@ export const GlobalStorage = ({ children }) => {
   const [cep, setCep] = React.useState("");
   const [validaCep, setValidaCep] = React.useState(true);
   const [favoritos, setFavoritos] = React.useState(JSON.parse(window.localStorage.getItem("favoritos")) || []);
+  const [dados, setDados] = React.useState(null);
   const storageCep = window.localStorage.getItem("cep");
+
+  React.useEffect(() => {
+    fetch(`https://viacep.com.br/ws/${storageCep}/json/`)
+      .then((res) => res.json())
+      .then((res) => setDados(res));
+  }, [storageCep]);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -38,6 +45,7 @@ export const GlobalStorage = ({ children }) => {
         handleFavoritos,
         favoritos,
         storageCep,
+        dados
       }}
     >
       {children}

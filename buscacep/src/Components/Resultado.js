@@ -4,14 +4,7 @@ import { GlobalContext } from '../GlobalContext'
 import { FaSearch, FaStar } from "react-icons/fa";
 
 const Resultado = () => {
-  const {handleFavoritos, storageCep} = React.useContext(GlobalContext)
-  const [dados, setDados] = React.useState(null);
-
-  React.useEffect(() => {
-    fetch(`https://viacep.com.br/ws/${storageCep}/json/`)
-      .then((res) => res.json())
-      .then((res) => setDados(res));
-  }, [storageCep]);
+  const {handleFavoritos, storageCep, dados} = React.useContext(GlobalContext)
 
   return (
     <div className={styles.resultado}>
@@ -41,12 +34,8 @@ const Resultado = () => {
           </table>
 
           <div className={styles.links}>
-            <a href="/">
-              <FaSearch className={styles.icon} /> Nova busca
-            </a>
-            <a className={styles.iconStar} onClick={handleFavoritos}>
-              <FaStar className={styles.icon} /> Adicionar aos favoritos
-            </a>
+            <a href="/"><button><FaSearch className={styles.icon} /> Nova busca</button></a>
+            <button onClick={handleFavoritos} className={styles.iconStar}><FaStar className={styles.icon} /> Adicionar aos favoritos</button>
           </div>
 
           <div className={styles.mapa}>

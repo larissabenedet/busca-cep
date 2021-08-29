@@ -3,7 +3,7 @@
 form {margin-top: 30px;}
 label, input, button {display: block; width: 100%; box-sizing: border-box;}
 label {margin-bottom: 10px; font-size: 1.1rem;}
-input {border: 1px solid transparent; padding: 15px;}
+input {border: 1px solid #E6E7E8; padding: 15px;}
 input::placeholder{font-size: 16px;}
 input:focus{border: 1px solid var(--azul);}
 .inicial p {margin: 15px 0 25px 0; color: red;}
