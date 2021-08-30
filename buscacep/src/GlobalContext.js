@@ -9,6 +9,7 @@ export const GlobalStorage = ({ children }) => {
     JSON.parse(window.localStorage.getItem("favoritos")) || []
   );
   const [dados, setDados] = React.useState(null);
+  const [buttonState, setButtonState] = React.useState(false);
   const storageCep = window.localStorage.getItem("cep");
 
   React.useEffect(() => {
@@ -43,6 +44,7 @@ export const GlobalStorage = ({ children }) => {
   function handleFavoritos() {
     // adiciona um novo cep favorito a lista de favoritos
     setFavoritos([...favoritos, storageCep]);
+    setButtonState(true)
   }
 
   function handleCepFavorito(cep) {
@@ -63,6 +65,7 @@ export const GlobalStorage = ({ children }) => {
         storageCep,
         dados,
         handleCepFavorito,
+        buttonState
       }}
     >
       {children}

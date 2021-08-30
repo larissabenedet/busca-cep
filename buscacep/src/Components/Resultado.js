@@ -1,10 +1,10 @@
 import React from "react";
 import styles from "./Resultado.module.css";
-import { GlobalContext } from '../GlobalContext'
+import { GlobalContext } from "../GlobalContext";
 import { FaSearch, FaStar } from "react-icons/fa";
 
 const Resultado = () => {
-  const {handleFavoritos, storageCep, dados} = React.useContext(GlobalContext)
+  const { handleFavoritos, storageCep, dados, buttonState } = React.useContext(GlobalContext);
 
   return (
     <div className={styles.resultado}>
@@ -34,8 +34,19 @@ const Resultado = () => {
           </table>
 
           <div className={styles.links}>
-            <a href="/"><button><FaSearch className={styles.icon} /> Nova busca</button></a>
-            <button onClick={handleFavoritos} className={styles.iconStar}><FaStar className={styles.icon} /> Adicionar aos favoritos</button>
+            <a href="/">
+              <button>
+                <FaSearch className={styles.icon} /> Nova busca
+              </button>
+            </a>
+            <button
+              onClick={handleFavoritos}
+              className={styles.iconStar}
+              style={{ pointerEvents: buttonState && "none" }}
+            >
+              <FaStar className={styles.icon} />{" "}
+              {buttonState ? "Adicionado!" : "Adicionar aos favoritos"}
+            </button>
           </div>
 
           <div className={styles.mapa}>

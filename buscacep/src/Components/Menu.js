@@ -13,10 +13,14 @@ const Menu = () => {
       </div>
       <div className={styles.navLinks}>
         <a href="/">
-          <span className={pathname === "/" ? styles.ativo : undefined}>Inicial</span>
+          <span className={pathname === "/" ? styles.ativo : undefined}>
+            Inicial
+          </span>
         </a>
         <a href="/favoritos">
-          <span className={pathname === "/favoritos" ? styles.ativo : undefined}>
+          <span
+            className={pathname === "/favoritos" ? styles.ativo : undefined}
+          >
             Favoritos
           </span>
         </a>
