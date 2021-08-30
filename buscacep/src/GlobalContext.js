@@ -12,16 +12,20 @@ export const GlobalStorage = ({ children }) => {
   const storageCep = window.localStorage.getItem("cep");
 
   React.useEffect(() => {
-    fetch(`https://viacep.com.br/ws/${storageCep}/json/`)
-      .then((res) => res.json())
-      .then((res) => setDados(res));
+    // fetch com o cep informado
+    if (storageCep)
+      fetch(`https://viacep.com.br/ws/${storageCep}/json/`)
+        .then((res) => res.json())
+        .then((res) => setDados(res));
   }, [storageCep]);
 
   React.useEffect(() => {
+    // atualiza a lista de favoritos no browser
     window.localStorage.setItem("favoritos", JSON.stringify(favoritos));
   }, [favoritos]);
 
   function handleSubmit(e) {
+    // valida o cep informado e chama a página resultado
     e.preventDefault();
     if (cep !== "") {
       //Expressão regular para validar o CEP.
@@ -37,7 +41,14 @@ export const GlobalStorage = ({ children }) => {
   }
 
   function handleFavoritos() {
+    // adiciona um novo cep favorito a lista de favoritos
     setFavoritos([...favoritos, storageCep]);
+  }
+
+  function handleCepFavorito(cep) {
+    // seta no browser o cep favorito selecionado, e redireciona para a página resultado
+    window.localStorage.setItem("cep", cep);
+    window.location.href = "/resultado";
   }
 
   return (
@@ -50,7 +61,8 @@ export const GlobalStorage = ({ children }) => {
         handleFavoritos,
         favoritos,
         storageCep,
-        dados
+        dados,
+        handleCepFavorito,
       }}
     >
       {children}

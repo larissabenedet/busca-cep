@@ -3,15 +3,16 @@ import { GlobalContext } from "../GlobalContext";
 import { Slide } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
 import styles from "./Favoritos.module.css";
+import { FaMapMarkerAlt, FaAngleDoubleRight } from "react-icons/fa";
 
 const Favoritos = () => {
-  const { favoritos } = React.useContext(GlobalContext);
+  const { favoritos, handleCepFavorito } = React.useContext(GlobalContext);
 
   const properties = {
     duration: 3000,
-    slidesToShow: 3,
-    slidesToScroll: 3,
-    autoplay: false,
+    slidesToShow: window.matchMedia("(max-width:885px)").matches ? 1 : favoritos.length > 3 ? 3 : favoritos.length,
+    slidesToScroll: window.matchMedia("(max-width:885px)").matches ? 1 : favoritos.length > 3 ? 3 : favoritos.length,
+    autoplay: false
   };
 
   if (favoritos.length <= 0 || !favoritos)
@@ -31,8 +32,15 @@ const Favoritos = () => {
             return (
               <div key={endereco}>
                 <div className={styles.slide}>
+                  <FaMapMarkerAlt className={styles.iconMap} />
                   <span className={styles.cep}>CEP: {endereco}</span>
-                  <button>Mais informações</button>
+                  <span
+                    className={styles.botao}
+                    onClick={() => handleCepFavorito(endereco)}
+                  >
+                    Mais informações{" "}
+                    <FaAngleDoubleRight className={styles.iconSeta} />
+                  </span>
                 </div>
               </div>
             );

@@ -14,7 +14,7 @@ function Inicial() {
                 type="text"
                 id="cep"
                 name="cep"
-                placeholder="Exemplo: 88801010"
+                placeholder="Exemplo: 64034606"
                 value={cep}
                 onChange={(e) => setCep(e.target.value)}
                 required
