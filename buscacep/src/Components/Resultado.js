@@ -4,7 +4,8 @@ import { GlobalContext } from "../GlobalContext";
 import { FaSearch, FaStar } from "react-icons/fa";
 
 const Resultado = () => {
-  const { handleFavoritos, storageCep, dados, buttonState } = React.useContext(GlobalContext);
+  const { favoritos, handleFavoritos, storageCep, dados, buttonState } =
+    React.useContext(GlobalContext);
 
   return (
     <div className={styles.resultado}>
@@ -42,10 +43,19 @@ const Resultado = () => {
             <button
               onClick={handleFavoritos}
               className={styles.iconStar}
-              style={{ pointerEvents: buttonState && "none" }}
+              style={{
+                pointerEvents:
+                  favoritos.includes(storageCep) || buttonState
+                    ? "none"
+                    : "auto",
+              }}
             >
               <FaStar className={styles.icon} />{" "}
-              {buttonState ? "Adicionado!" : "Adicionar aos favoritos"}
+              {favoritos.includes(storageCep)
+                ? "Adicionado!"
+                : buttonState
+                ? "Adicionado!"
+                : "Adicionar aos favoritos"}
             </button>
           </div>
 
