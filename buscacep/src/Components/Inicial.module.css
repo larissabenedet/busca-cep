@@ -5,7 +5,7 @@ label, input, button {display: block; width: 100%; box-sizing: border-box;}
 label {margin-bottom: 10px; font-size: 1.1rem;}
 input {border: 1px solid #E6E7E8; padding: 15px;}
 input::placeholder{font-size: 16px;}
-input:focus{border: 1px solid var(--azul);}
+input:focus { outline: none; border: 1px solid #D9D9D9;}
 .inicial p {margin: 15px 0 25px 0; color: red;}
 button {border: none; background-color: var(--amarelo); color: #FFF; font-weight: 600; padding: 10px 0; cursor: pointer; margin-top: 20px;
 }
